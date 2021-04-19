@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keras-flask
+  labels:
+    app: keras-flask
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: keras-flask
+  template:
+    metadata:
+      labels:
+        app: keras-flask
+    spec:
+      containers:
+      - name: keras-flask
+        image: samkitshah20/keras-flask:v7
+        command: [ "/bin/bash", "-c", "--" ]
+        args: [ "while true; do sleep 300; done;" ]
+       
